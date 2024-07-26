@@ -1,14 +1,10 @@
 {
   "name": "create-ts-npm-module",
-  "version": "0.0.1",
-  "description": "My custom React scaffold",
+  "version": "1.0.3",
+  "description": "A CLI tool to quickly scaffold TypeScript-based npm modules with a customizable template.",
   "main": "index.js",
   "bin": {
     "create-ts-npm-module": "./index.js"
-  },
-  "scripts": {
-    "prepublishOnly": "node -e \"const fs = require('fs'); const path = require('path'); const npmignorePath = path.join(__dirname, 'template', '.npmignore'); const backupPath = path.join(__dirname, 'template', 'npmignore.bak'); if (fs.existsSync(npmignorePath)) fs.renameSync(npmignorePath, backupPath);\"",
-    "postpublish": "node -e \"const fs = require('fs'); const path = require('path'); const backupPath = path.join(__dirname, 'template', 'npmignore.bak'); const npmignorePath = path.join(__dirname, 'template', '.npmignore'); if (fs.existsSync(backupPath)) fs.renameSync(backupPath, npmignorePath);\""
   },
   "keywords": [],
   "author": "Luis Manuel Cauasa Suárez",
