@@ -3,16 +3,10 @@
 const inquirer = require("inquirer");
 const fs = require("fs-extra");
 const path = require("path");
+const { execSync } = require("child_process");
 
-// Define paths for the .npmignore file and its backup
-const npmignorePath = path.join(__dirname, "template", ".npmignore");
-const backupPath = path.join(__dirname, "template", "npmignore.bak");
-
-// Restore the .npmignore file from backup if it exists
-if (fs.existsSync(backupPath)) {
-  fs.renameSync(backupPath, npmignorePath); // Restore the original .npmignore file
-  fs.unlinkSync(backupPath); // Remove the backup file
-}
+// Define the GitHub repository URL for the template
+const repoUrl = "https://github.com/luismasuarez/npm-module-template.git";
 
 // Define questions to prompt the user for module details
 const questions = [
@@ -69,12 +63,15 @@ async function main() {
     // Determine the target directory for the new module
     const targetDirectory = path.join(process.cwd(), answers.moduleName);
 
-    // Directory containing the template files
-    const scaffoldDirectory = path.join(__dirname, "template");
+    // Clone the GitHub repository to the target directory
+    console.log(`Cloning template from ${repoUrl} into ${targetDirectory}...`);
+    execSync(`git clone ${repoUrl} ${targetDirectory}`, { stdio: "inherit" });
 
-    // Copy template files to the new module directory
-    await fs.copy(scaffoldDirectory, targetDirectory);
-    console.log(`Module ${answers.moduleName} created successfully!`);
+    // Remove the `.git` directory to avoid interfering with user's project
+    const gitDirectory = path.join(targetDirectory, ".git");
+    if (fs.existsSync(gitDirectory)) {
+      fs.removeSync(gitDirectory);
+    }
 
     // Customize the package.json file with user-provided details
     customizePackageJson(targetDirectory, answers);
@@ -100,7 +97,7 @@ function customizePackageJson(targetDirectory, answers) {
 
   // Save the updated package.json file
   fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
-  console.log("Module scaffold created successfully!");
+  console.log("Module scaffold created and package.json updated successfully!");
 }
 
 // Execute the main function
