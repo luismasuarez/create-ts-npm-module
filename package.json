@@ -1,12 +1,33 @@
 {
   "name": "create-ts-npm-module",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A CLI tool to quickly scaffold TypeScript-based npm modules with a customizable template.",
   "main": "index.js",
   "bin": {
     "create-ts-npm-module": "./index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "npm",
+    "cli",
+    "typescript",
+    "scaffold",
+    "module",
+    "template",
+    "starter",
+    "generator",
+    "typescript-module",
+    "npm-module",
+    "typescript-scaffold",
+    "module-generator",
+    "package",
+    "development",
+    "tool",
+    "create",
+    "starter-kit",
+    "project-scaffold",
+    "typescript-starter",
+    "npm-scaffold"
+  ],
   "author": "Luis Manuel Cauasa Suárez",
   "license": "MIT",
   "dependencies": {

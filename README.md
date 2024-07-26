@@ -1,6 +1,6 @@
 # 📦 Create Your npm Module
 
-**create-ts-npm-module** simplifies creating a new npm module with a ready-to-use template. 🎉🚀
+**create-ts-npm-module** simplifies creating a new npm module with a ready-to-use template. 🎉
 
 ## 📥 Installation
 
