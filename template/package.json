@@ -1,0 +1,27 @@
+{
+  "name": "npm-module-template",
+  "description": "Just a template package for create a npm module.",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "homepage": "https://github.com/luismasuarez",
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "npm",
+    "module",
+    "template",
+    "starter scaffold"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^8.2.2",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "ncp": "^2.0.0"
+  }
+}
